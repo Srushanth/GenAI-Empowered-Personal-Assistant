@@ -19,7 +19,6 @@ jobs:
       - name: uv sync dependencies
         run: |
           uv venv
-          uv add --dev pylint
           uv sync
       - name: Run pylint
         run: |
