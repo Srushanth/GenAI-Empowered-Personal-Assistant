@@ -15,4 +15,5 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.0",
+    "pylint>=3.3.7",
 ]
