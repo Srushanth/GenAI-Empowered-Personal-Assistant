@@ -43,6 +43,14 @@ search_agent = Agent(
 
 
 def assistant_pipeline(user_query: str):
+    """_summary_
+
+    Args:
+        user_query (str): _description_
+
+    Returns:
+        _type_: _description_
+    """
     # Run web search to get live results
     search_results = web_search(user_query)
 
