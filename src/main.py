@@ -6,6 +6,21 @@ interaction loop.
 
 from strands import tool
 from strands import Agent
-from llama_index.readers.google.calendar.base import GoogleCalendarReader
+from duckduckgo_search import DDGS
 
-google_calendar_reader = GoogleCalendarReader()
+
+def web_search(query: str, num_results: int = 5):
+    """_summary_
+
+    Args:
+        query (str): _description_
+        num_results (int, optional): _description_. Defaults to 5.
+
+    Returns:
+        _type_: _description_
+    """
+    ddgs = DDGS()
+    return ddgs.text(query, max_results=num_results)
+
+
+search_agent = Agent()
