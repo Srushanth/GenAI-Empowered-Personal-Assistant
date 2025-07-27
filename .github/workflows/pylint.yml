@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: UV pin Python version
+        run: |
+          uv python pin ${{ matrix.python-version }}
       - name: uv sync dependencies
         run: |
           uv venv
