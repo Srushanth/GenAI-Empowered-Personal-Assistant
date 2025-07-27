@@ -90,5 +90,3 @@ graph TD
 - **Scalability:** Components can run in containers/microservices.
 - **Extensibility:** Easy integration of new agent types or AI models.
 - **User-Centric:** Interface and personalization built-in from the start.
-
-Let me know if you need a more detailed component breakdown or sample code for any layer!
