@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "duckduckgo-search>=8.1.1",
+    "ddgs>=9.4.3",
     "langchain-google-community[calendar]>=2.0.7",
     "llama-index-readers-google>=0.6.2.post1",
     "strands-agents[ollama]>=1.1.0",
