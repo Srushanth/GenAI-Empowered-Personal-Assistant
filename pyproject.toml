@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "langchain-google-community[calendar]>=2.0.7",
     "llama-index-readers-google>=0.6.2.post1",
     "strands-agents>=1.1.0",
 ]
