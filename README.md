@@ -1,18 +1,21 @@
 # GenAI-Empowered-Personal-Assistant
 
-Here's a high-level architecture design for an AI personal assistant with the specified requirements. This design highlights core components, their responsibilities, and how they interact, focusing on extensibility and modularity.
-
 ## High-Level Architecture Overview
 
+Here's a high-level architecture design for an AI personal assistant with the specified requirements. This design highlights core components, their responsibilities, and how they interact, focusing on extensibility and modularity.
+
 ### 1. Gradio UI
+
 - **Purpose:** User interaction interface (text, voice, uploads).
 - **Role:** Captures user queries and displays results, serving as the main entry and exit point for all interactions.
 
 ### 2. API Gateway / Orchestrator
+
 - **Purpose:** Central coordinator for incoming UI requests.
 - **Role:** Routes user inputs to the appropriate agents or modules. Handles session management, state tracking, and response aggregation.
 
 ### 3. Agent Management (strands-agents)
+
 - **Purpose:** Manage and execute different AI agents, encapsulate skills/tasks.
 - **Key Agents:**
   - **Calendar Agent:** Interfaces with calendar APIs (Google, Outlook) to fetch/add events, send reminders, etc.
@@ -23,10 +26,12 @@ Here's a high-level architecture design for an AI personal assistant with the sp
 - **Interaction:** The orchestrator invokes relevant agents via the strands-agents framework, optionally combining outputs.
 
 ### 4. Large Language Model (lln via ollama)
+
 - **Purpose:** Natural language understanding, reasoning, and response synthesis.
 - **Role:** Handles conversation, multi-turn dialogue, summarization, and natural language queries. Acts as the core engine interpreting user intent and generating structured actions for agents.
 
 ### 5. Data Storage
+
 - **Purpose:** Persist user-specific data.
 - **Types:**
   - **Notes Database:** For persistent note management (NoSQL or SQL).
@@ -34,6 +39,7 @@ Here's a high-level architecture design for an AI personal assistant with the sp
   - **Session State:** Holds temporary context for ongoing conversations.
 
 ### 6. External Integrations
+
 - **APIs for:** Calendar (Google/Outlook), web search (Bing/Google), other productivity tools.
 - **Purpose:** Enable assistant functionalities by connecting to outside services securely.
 
@@ -57,6 +63,7 @@ graph TD
 ## Key Functional Flows
 
 ### Calendar Management
+
 1. User issues a request (e.g., “Add a meeting tomorrow at 3pm with Alex.”).
 2. Gradio UI sends to Orchestrator.
 3. Orchestrator forwards to LLM, which parses intent (add calendar event).
@@ -65,10 +72,12 @@ graph TD
 6. LLM generates a human-friendly response, returned to Gradio UI.
 
 ### Web Search
+
 1. User asks, “What’s the weather in Paris?”
 2. Same flow as above, routed to Web Search Agent, which fetches real-time data.
 
 ### Note-Taking
+
 1. User says, “Remember to buy milk.”
 2. Routed to Note-Taking Agent, which stores the note in database.
 3. Retrieval uses similar pipeline, with LLM managing phrasing.
