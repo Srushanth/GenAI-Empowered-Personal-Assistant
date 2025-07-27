@@ -420,7 +420,7 @@ dependencies = [
     { name = "duckduckgo-search" },
     { name = "langchain-google-community", extra = ["calendar"] },
     { name = "llama-index-readers-google" },
-    { name = "strands-agents" },
+    { name = "strands-agents", extra = ["ollama"] },
 ]
 
 [package.dev-dependencies]
@@ -433,7 +433,7 @@ requires-dist = [
     { name = "duckduckgo-search", specifier = ">=8.1.1" },
     { name = "langchain-google-community", extras = ["calendar"], specifier = ">=2.0.7" },
     { name = "llama-index-readers-google", specifier = ">=0.6.2.post1" },
-    { name = "strands-agents", specifier = ">=1.1.0" },
+    { name = "strands-agents", extras = ["ollama"], specifier = ">=1.1.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -1329,6 +1329,19 @@ wheels = [
 ]
 
 [[package]]
+name = "ollama"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8d/96/c7fe0d2d1b3053be614822a7b722c7465161b3672ce90df71515137580a0/ollama-0.5.1.tar.gz", hash = "sha256:5a799e4dc4e7af638b11e3ae588ab17623ee019e496caaf4323efbaa8feeff93", size = 41112, upload-time = "2025-05-30T21:32:48.679Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d6/76/3f96c8cdbf3955d7a73ee94ce3e0db0755d6de1e0098a70275940d1aff2f/ollama-0.5.1-py3-none-any.whl", hash = "sha256:4c8839f35bc173c7057b1eb2cbe7f498c1a7e134eafc9192824c8aecb3617506", size = 13369, upload-time = "2025-05-30T21:32:47.429Z" },
+]
+
+[[package]]
 name = "opentelemetry-api"
 version = "1.35.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2197,6 +2210,11 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/fe/93/2b3603c08a94feebbe836b78b4a925b4fcdf7a4060c2ccd53b987239b532/strands_agents-1.1.0.tar.gz", hash = "sha256:bba7ad79a1b9e39986135e0907dad97b90e318ab3f3fb4f33742e12714ec6aa8", size = 230143, upload-time = "2025-07-24T21:13:57.305Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c6/46/02ab678f266bd07d0f4ebd0f43499eabc02a832ea5d35c4f7a2b2bf770c8/strands_agents-1.1.0-py3-none-any.whl", hash = "sha256:183d0b6f7533d4bb3655cda1d7a8ab6189bffeb20184dd88b45881daf83dc5f5", size = 163806, upload-time = "2025-07-24T21:13:53.733Z" },
+]
+
+[package.optional-dependencies]
+ollama = [
+    { name = "ollama" },
 ]
 
 [[package]]
