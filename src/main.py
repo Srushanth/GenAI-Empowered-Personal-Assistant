@@ -4,15 +4,16 @@ It initializes the application, sets up the necessary configurations, and starts
 interaction loop.
 """
 
-from strands import tool
-from strands import Agent
+import gradio as gr
+from strands import tool, Agent
 from strands.models.ollama import OllamaModel
 from ddgs import DDGS
 
-# Create an Ollama model instance
+
+# Ollama model instance
 ollama_model = OllamaModel(
-    host="http://localhost:11434",  # Ollama server address
-    model_id="qwen3",  # Specify which model to use
+    host="http://localhost:11434",
+    model_id="qwen3",
 )
 
 
@@ -40,11 +41,26 @@ search_agent = Agent(
     tools=[web_search],
 )
 
-user_query = "What is the capital of india?"
 
-# Explicitly call web_search
-search_results = web_search(user_query)
-print("Web search results:", search_results)
+def assistant_pipeline(user_query: str):
+    # Run web search to get live results
+    search_results = web_search(user_query)
 
-response = search_agent(user_query)
-print("LLM response:", response)
+    # Call the LLM agent to generate a response
+    llm_response = search_agent(user_query)
+
+    # Return both outputs for display
+    return llm_response, search_results
+
+
+# Gradio UI
+iface = gr.Interface(
+    fn=assistant_pipeline,
+    inputs=gr.Textbox(label="Enter your query"),
+    outputs=[gr.Textbox(label="LLM Response"), gr.Textbox(label="Web Search Results")],
+    title="GenAI Empowered Personal Assistant",
+    description="Ask a question and get both AI-generated and live web search answers.",
+)
+
+if __name__ == "__main__":
+    iface.launch()
