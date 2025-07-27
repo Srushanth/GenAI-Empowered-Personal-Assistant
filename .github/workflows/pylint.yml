@@ -20,7 +20,7 @@ jobs:
           pip install pylint
           pip install uv
           uv sync
-          source .venv/bin/activate
       - name: Analysing the code with pylint
         run: |
+          source .venv/bin/activate
           pylint $(git ls-files '*.py')
