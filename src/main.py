@@ -6,4 +6,6 @@ interaction loop.
 
 from strands import tool
 from strands import Agent
-from langchain_google_community import CalendarToolkit
+from llama_index.readers.google.calendar.base import GoogleCalendarReader
+
+google_calendar_reader = GoogleCalendarReader()
