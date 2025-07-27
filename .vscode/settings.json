@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
+        "DDGS",
         "duckduckgo",
         "genai",
         "ipykernel",
         "langchain",
         "mgmt",
-        "ollama"
+        "ollama",
+        "qwen"
     ]
 }
