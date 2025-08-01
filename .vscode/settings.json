@@ -9,5 +9,6 @@
         "ollama",
         "pylint",
         "qwen"
-    ]
+    ],
+    "python.languageServer": "None"
 }
