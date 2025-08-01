@@ -42,32 +42,32 @@ search_agent = Agent(
 )
 
 
-def assistant_pipeline(user_query: str):
-    """_summary_
-
-    Args:
-        user_query (str): _description_
-
-    Returns:
-        _type_: _description_
+def assistant_chatbot(message, history):
+    """
+    Chatbot function for Gradio ChatInterface.
+    Accepts the latest user message and the chat history.
+    Returns the assistant's response (LLM) and appends web search results as a reference.
     """
     # Run web search to get live results
-    search_results = web_search(user_query)
+    search_results = web_search(message)
 
     # Call the LLM agent to generate a response
-    llm_response = search_agent(user_query)
+    llm_response = search_agent(message)
 
-    # Return both outputs for display
-    return llm_response, search_results
+    # Optionally, append web search results as a reference in the chat
+    response = f"{llm_response}\n\n---\n**Web Search Results:**\n{search_results}"
+    return response
 
 
-# Gradio UI
-iface = gr.Interface(
-    fn=assistant_pipeline,
-    inputs=gr.Textbox(label="Enter your query"),
-    outputs=[gr.Textbox(label="LLM Response"), gr.Textbox(label="Web Search Results")],
+# Gradio ChatInterface
+iface = gr.ChatInterface(
+    fn=assistant_chatbot,
     title="GenAI Empowered Personal Assistant",
-    description="Ask a question and get both AI-generated and live web search answers.",
+    description=(
+        "Chat with your AI assistant. Each answer includes both an AI-generated response "
+        "and live web search results."
+    ),
+    textbox=gr.Textbox(placeholder="Ask anything...", label="Your message"),
 )
 
 if __name__ == "__main__":
